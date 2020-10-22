@@ -1,0 +1,70 @@
+﻿@model IEnumerable<LibrarySystem.Models.Weights>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>剔旧权重</h2>
+
+<p>
+    @Html.ActionLink("创建新权重", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            出版年代
+        </th>
+        <th>
+            出版社是否百佳
+        </th>
+        <th>
+            复本量
+        </th>
+        <th>
+            最新离架时长换算
+        </th>
+        <th>
+            单书流通频次
+        </th>
+        <th>
+            操作
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Wyear)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.WBaijia)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Wduplication)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.WOffTime)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.WcirculationFequency)
+    </td>
+    @if (item.Id != 1)
+    {
+<td>
+    @Html.ActionLink("编辑", "Edit", new { id = item.Id }) |
+    @Html.ActionLink("删除", "Delete", new { id = item.Id }) |
+    @Html.ActionLink("应用", "Details", new { id = item.Id })
+</td>
+    }
+    else
+    {
+       <td>默认权重不可修改 |
+          @Html.ActionLink("应用", "Details", new { id = item.Id })
+       </td>
+    }
+
+</tr>
+}
+
+</table>

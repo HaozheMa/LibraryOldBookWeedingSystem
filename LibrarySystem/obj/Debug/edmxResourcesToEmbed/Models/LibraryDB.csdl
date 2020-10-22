@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="LibraryDB" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="LibraryDBContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Books" EntityType="LibraryDB.Books" />
+    <EntitySet Name="Weights" EntityType="LibraryDB.Weights" />
+  </EntityContainer>
+  <EntityType Name="Books">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="CallNum" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Author" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="ISBN" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Duplicates" Type="Int32" Nullable="false" />
+    <Property Name="CirculationFrequency" Type="Double" Nullable="false" />
+    <Property Name="PublisherName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="PublisherBaiJia" Type="Boolean" Nullable="false" />
+    <Property Name="CirculationCount" Type="Int32" Nullable="false" />
+    <Property Name="PublishYear" Type="Int32" />
+    <Property Name="YearCount" Type="Int32" />
+    <Property Name="OffTime" Type="Int32" Nullable="false" />
+    <Property Name="OffTimeCount" Type="Int32" Nullable="false" />
+    <Property Name="BWI" Type="Double" />
+    <Property Name="Id" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Weights">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Wyear" Type="Double" Nullable="false" />
+    <Property Name="WBaijia" Type="Double" Nullable="false" />
+    <Property Name="Wduplication" Type="Double" Nullable="false" />
+    <Property Name="WOffTime" Type="Double" Nullable="false" />
+    <Property Name="WcirculationFequency" Type="Double" Nullable="false" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LibraryDBStoreContainer" CdmEntityContainer="LibraryDBContainer">
+    <EntitySetMapping Name="Books">
+      <EntityTypeMapping TypeName="IsTypeOf(LibraryDB.Books)">
+        <MappingFragment StoreEntitySet="Books">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CallNum" ColumnName="CallNum" />
+          <ScalarProperty Name="Author" ColumnName="Author" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+          <ScalarProperty Name="Duplicates" ColumnName="Duplicates" />
+          <ScalarProperty Name="CirculationFrequency" ColumnName="CirculationFrequency" />
+          <ScalarProperty Name="PublisherName" ColumnName="PublisherName" />
+          <ScalarProperty Name="PublisherBaiJia" ColumnName="PublisherBaiJia" />
+          <ScalarProperty Name="CirculationCount" ColumnName="CirculationCount" />
+          <ScalarProperty Name="PublishYear" ColumnName="PublishYear" />
+          <ScalarProperty Name="YearCount" ColumnName="YearCount" />
+          <ScalarProperty Name="OffTime" ColumnName="OffTime" />
+          <ScalarProperty Name="OffTimeCount" ColumnName="OffTimeCount" />
+          <ScalarProperty Name="BWI" ColumnName="BWI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Weights">
+      <EntityTypeMapping TypeName="IsTypeOf(LibraryDB.Weights)">
+        <MappingFragment StoreEntitySet="Weights">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Wyear" ColumnName="Wyear" />
+          <ScalarProperty Name="WBaijia" ColumnName="WBaijia" />
+          <ScalarProperty Name="Wduplication" ColumnName="Wduplication" />
+          <ScalarProperty Name="WOffTime" ColumnName="WOffTime" />
+          <ScalarProperty Name="WcirculationFequency" ColumnName="WcirculationFequency" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

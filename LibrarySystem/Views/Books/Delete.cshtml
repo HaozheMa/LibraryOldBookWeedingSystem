@@ -1,0 +1,138 @@
+﻿@model LibrarySystem.Models.Books
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Books</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            索书号
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CallNum)
+        </dd>
+
+        <dt>
+            作者
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Author)
+        </dd>
+
+        <dt>
+            书名
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            ISBN
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ISBN)
+        </dd>
+
+        <dt>
+            复本量
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Duplicates)
+        </dd>
+
+        <dt>
+            单书流同频率
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CirculationFrequency)
+        </dd>
+
+        <dt>
+            出版社
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PublisherName)
+        </dd>
+
+        <dt>
+            出版社是否百佳
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PublisherBaiJia)
+        </dd>
+
+        <dt>
+            单书流通频次
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CirculationCount)
+        </dd>
+
+        <dt>
+            出版年份
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PublishYear)
+        </dd>
+
+        <dt>
+            出版年份换算
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YearCount)
+        </dd>
+
+        <dt>
+            最新离架时长
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OffTime)
+        </dd>
+
+        <dt>
+            最新离架时长换算
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OffTimeCount)
+        </dd>
+
+        <dt>
+            BWI
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BWI)
+        </dd>
+
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("返回", "Index", new { @class = "btn btn-default" })
+        </div>
+    }
+</div>

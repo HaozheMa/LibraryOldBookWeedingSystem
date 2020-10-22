@@ -1,0 +1,28 @@
+﻿@model LibrarySystem.Models.IndexViewModel
+@{
+    ViewBag.Title = "账号管理";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+<div>
+    <h4>修改您的账户设置</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>密码:</dt>
+        <dd>
+            [
+            @if (Model.HasPassword)
+            {
+                @Html.ActionLink("修改密码", "ChangePassword")
+            }
+            else
+            {
+                @Html.ActionLink("创建密码", "SetPassword")
+            }
+            ]
+        </dd>
+        
+    </dl>
+</div>

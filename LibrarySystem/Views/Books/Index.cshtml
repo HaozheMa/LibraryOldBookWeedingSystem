@@ -1,0 +1,249 @@
+﻿@model IEnumerable<LibrarySystem.Models.Books>
+
+@{
+    ViewBag.Title = "图书信息";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>图书信息</h2>
+<hr/>
+<p>
+    @Html.ActionLink("记录新图书", "Create") |
+    导出所有数据
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                书名
+            </th>
+            <th>
+                作者
+            </th>
+            <th>
+                索书号
+            </th>
+            <th>
+                ISBN
+            </th>
+            <th>
+                复本率
+            </th>
+            <th>
+                单书流通频次
+            </th>
+            <th>
+                出版社
+            </th>
+            <th>
+                出版年份
+            </th>
+            <th>
+                最新离架时长
+            </th>
+            <th>
+                BWI
+            </th>
+            <th>
+                操作
+            </th>
+
+        </tr>
+    </thead>
+
+</table>
+@section scripts{
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            bindDatatable();
+        });
+
+        function bindDatatable() {
+            datatable = $('.table')
+                .DataTable({
+                    "sAjaxSource": "/Books/GetData",
+                    "bServerSide": true,
+                    "bProcessing": true,
+                    "bSearchable": true,
+                    "order": [[1, 'asc']],
+                    "language": {
+                        "sProcessing": "处理中...",
+                        "sLengthMenu": "显示 _MENU_ 项结果",
+                        "sZeroRecords": "没有匹配结果",
+                        "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+                        "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+                        "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+                        "sInfoPostFix": "",
+                        "sSearch": "搜索:",
+                        "sUrl": "",
+                        "sEmptyTable": "表中数据为空",
+                        "sLoadingRecords": "载入中...",
+                        "sInfoThousands": ",",
+                        "oPaginate": {
+                            "sFirst": "首页",
+                            "sPrevious": "上页",
+                            "sNext": "下页",
+                            "sLast": "末页"
+                        },
+                        "oAria": {
+                            "sSortAscending": ": 以升序排列此列",
+                            "sSortDescending": ": 以降序排列此列"
+                        }
+                    },
+                    "columns": [
+                        {
+                            "data": "Name",
+                            "autoWidth": true,
+                            "searchable": true
+                        },
+                        {
+                            "data": "Author",
+                            "autoWidth": true,
+                            "searchable": true
+                        },
+                        {
+                            "data": "CallNum",
+                            "autoWidth": true,
+                            "searchable": true
+                        },
+                        {
+                            "data": "ISBN",
+                            "autoWidth": true,
+                            "searchable": true
+                        }, {
+                            "data": "Duplicates",
+                            "autoWidth": true,
+                            "searchable": true
+                        }, {
+                            "data": "CirculationCount",
+                            "autoWidth": true,
+                            "searchable": true
+                        }, {
+                            "data": "PublisherName",
+                            "autoWidth": true,
+                            "searchable": true
+                        }, {
+                            "data": "PublishYear",
+                            "autoWidth": true,
+                            "searchable": true
+                        }, {
+                            "data": "OffTime",
+                            "autoWidth": true,
+                            "searchable": true
+                        },
+                        {
+                            "data": "BWI",
+                            "autoWidth": true,
+                            "searchable": true
+                        }, {
+                            "targets": 3,
+                            "data": "Id",
+                            "render": function (data, type, row) {
+                                var id = data;
+                                var html = "<a href='/Books/Details/"+ id +"'  class='delete btn btn-default btn-xs'  ><i class='fa fa-times'></i> 查看</a>"
+                                html += "<a href='/Books/Edit/" + id +"' class='up btn btn-default btn-xs'><i class='fa fa-arrow-up'></i> 编辑</a>"
+                                html += "<a href='/Books/Delete/" + id +"' class='down btn btn-default btn-xs'><i class='fa fa-arrow-down'></i> 删除</a>"
+                                return html;
+                            }
+                        }, 
+                    ]
+                   
+                });
+
+        }
+    </script>
+}
+
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+@*
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CallNum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ISBN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Duplicates)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CirculationCount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PublisherName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PublishYear)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OffTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BWI)
+                </td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+
+            </tr>
+        }
+    </tbody>
+    @section Scripts {
+
+        @Scripts.Render("https://code.jquery.com/jquery-3.5.1.js")
+        @Scripts.Render("https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js")
+        <script>
+            $(document).ready(function () {
+                $('.table').DataTable({
+
+                    "bLengthChange": true, //开关，是否显示每页显示多少条数据的下拉框
+                    "aLengthMenu": [[5, 10, 25, -1], [5, 10, 25, "所有"]],//设置每页显示数据条数的下拉选项
+                    'iDisplayLength': 5, //每页初始显示5条记录
+                    'bFilter': false,  //是否使用内置的过滤功能（是否去掉搜索框）
+                    "bInfo": true, //开关，是否显示表格的一些信息(当前显示XX-XX条数据，共XX条)
+                    "bPaginate": true, //开关，是否显示分页器
+                    "bSort": false, //是否可排序
+                    language: {
+                        "sProcessing": "处理中...",
+                        "sLengthMenu": "显示 _MENU_ 项结果",
+                        "sZeroRecords": "没有匹配结果",
+                        "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+                        "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+                        "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+                        "sInfoPostFix": "",
+                        "sSearch": "搜索:",
+                        "sUrl": "",
+                        "sEmptyTable": "表中数据为空",
+                        "sLoadingRecords": "载入中...",
+                        "sInfoThousands": ",",
+                        "oPaginate": {
+                            "sFirst": "首页",
+                            "sPrevious": "上页",
+                            "sNext": "下页",
+                            "sLast": "末页"
+                        },
+                        "oAria": {
+                            "sSortAscending": ": 以升序排列此列",
+                            "sSortDescending": ": 以降序排列此列"
+                        }
+                    }
+                });
+            });
+
+        </script>
+    }
+    <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet" />
+*@

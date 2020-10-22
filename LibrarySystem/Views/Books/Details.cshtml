@@ -1,0 +1,131 @@
+﻿@model LibrarySystem.Models.Books
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Books</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            索书号
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CallNum)
+        </dd>
+
+        <dt>
+            作者
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Author)
+        </dd>
+
+        <dt>
+           书名
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            ISBN
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ISBN)
+        </dd>
+
+        <dt>
+            复本量
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Duplicates)
+        </dd>
+
+        <dt>
+            单书流同频率
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CirculationFrequency)
+        </dd>
+
+        <dt>
+            出版社
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PublisherName)
+        </dd>
+
+        <dt>
+           出版社是否百佳
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PublisherBaiJia)
+        </dd>
+
+        <dt>
+            单书流通频次
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CirculationCount)
+        </dd>
+
+        <dt>
+            出版年份
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PublishYear)
+        </dd>
+
+        <dt>
+            出版年份换算
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YearCount)
+        </dd>
+
+        <dt>
+            最新离架时长
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OffTime)
+        </dd>
+
+        <dt>
+            最新离架时长换算
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OffTimeCount)
+        </dd>
+
+        <dt>
+            BWI
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BWI)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

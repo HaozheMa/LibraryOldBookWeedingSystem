@@ -1,0 +1,65 @@
+﻿@model LibrarySystem.Models.Weights
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Weights</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            出版年代
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Wyear)
+        </dd>
+
+        <dt>
+            出版社是否百佳
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WBaijia)
+        </dd>
+
+        <dt>
+            复本量
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Wduplication)
+        </dd>
+
+        <dt>
+            最新离架时长换算
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WOffTime)
+        </dd>
+
+        <dt>
+            单书流通频次
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WcirculationFequency)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="删除" class="btn btn-default" /> |
+            @Html.ActionLink("返回", "Index")
+        </div>
+    }
+</div>
